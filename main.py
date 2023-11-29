@@ -9,8 +9,8 @@ except Exception as bot_token: print(f"⚠️ Bot Token Invalid {bot_token}")
 try: crezy_developer = os.environ.get("crezy_developer", "`{crezy_developer}`")
 except Exception as crezy_developer: print(f"⚠️ Crezy Developer Name Invalid {crezy_developer}")
 
-AutoCaptionBot = pyrogram.Client(
-   name="AutoCaptionBot", api_id=app_id, api_hash=api_hash, bot_token=bot_token)
+CrezyDeveloperBot = pyrogram.Client(
+   name="@CrezyDeveloperBot", api_id=app_id, api_hash=api_hash, bot_token=bot_token)
 
 started_message = """
 <b>Selete 1 Premium Membership 👇</b>"""
@@ -68,61 +68,61 @@ Wow!!🤯
 You Have Choosen 1 Year Bot Membership Of Price ₹699
 Choose Payment Method 👇"""
 
-@AutoCaptionBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["start"]))
+@CrezyDeveloperBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["start"]))
 def start_command(bot, update):
   update.reply(start_message.format(update.from_user.mention), reply_markup=start_buttons(bot, update), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["owner"]))
+@CrezyDeveloperBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["owner"]))
 def contact_command(bot, update):
   update.reply(contact_message.format(update.from_user.mention), reply_markup=contact_buttons(bot, update), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["buy"]))
+@CrezyDeveloperBot.on_message(pyrogram.filters.private & pyrogram.filters.command(["buy"]))
 def started_command(bot, update):
   update.reply(started_message.format(update.from_user.mention), reply_markup=started_buttons(bot, update), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("start"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("start"))
 def strat_callback(bot, update):
   update.message.edit(start_message.format(update.from_user.mention), reply_markup=start_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("owner"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("owner"))
 def strat_callback(bot, update):
   update.message.edit(contact_message.format(update.from_user.mention), reply_markup=contact_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("buy"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("buy"))
 def strat_callback(bot, update):
   update.message.edit(started_message.format(update.from_user.mention), reply_markup=started_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
    
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("about"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("about"))
 def about_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(about_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=about_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("crezybotz"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("crezybotz"))
 def crezybotz_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(crezybotz_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=crezybotz_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("onlybotz"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("onlybotz"))
 def onlybotz_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(onlybotz_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=onlybotz_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("cdbotz"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("cdbotz"))
 def cdbotz_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(cdbotz_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=cdbotz_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("pay"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("pay"))
 def pay_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(pay_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=pay_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("Rakesh"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("Rakesh"))
 def Rakesh_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(Rakesh_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=Rakesh_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
 
-@AutoCaptionBot.on_callback_query(pyrogram.filters.regex("Info"))
+@CrezyDeveloperBot.on_callback_query(pyrogram.filters.regex("Info"))
 def Info_callback(bot, update): 
   bot = bot.get_me()
   update.message.edit(Info_message.format(version=pyrogram.__version__, username=bot.mention), reply_markup=Info_buttons(bot, update.message), parse_mode=pyrogram.enums.ParseMode.HTML, disable_web_page_preview=True)
@@ -233,4 +233,4 @@ def Info_buttons(bot, update):
 print("𝙘𝙧𝙚𝙯𝙮𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧 𝘽𝙤𝙩 𝘿𝙚𝙥𝙡𝙤𝙮 𝙎𝙪𝙘𝙘𝙚𝙨𝙨𝙛𝙪𝙡 ✅")
 print("𝘽𝙤𝙩 𝘾𝙧𝙚𝙖𝙩𝙚𝙙 𝘽𝙮 https://github.com/CrezyDeveloper/Auto-File-Caption")
 
-AutoCaptionBot.run()
+CrezyDeveloperBot.run()
